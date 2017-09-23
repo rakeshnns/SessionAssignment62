@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Assignment 6.2</title>
+</head>
+<body>
+<h2 style="text-align: center;background-color: lightgrey;">Array Assignment 6.2</h2>
+<p>List of Months in a year:</p>
+<p id="arrlist"> </p>                         <!-- Inner Html display part -->
+
+<!--  Button for Push Activity-->
+Push Missing Month-----: <button id="pushbu" onclick="pushbut()"> Push </button><br>
+<br>
+<!-- Button for Pop activity -->
+Pop Extra Month Added: <button id="popbu" onclick="popbut()"> Pop.. </button>
+<br>
+<br>
+<!-- Button to display only first for element for array -->
+Display from Index 1 to Index 4: <button id="arrdsp" onclick="arrdsp()"> 0..3 dsp </button>
+<!-- Java Script section -->
+   <script type="text/javascript">
+   	// Global variable declaration..
+   	var arr = ["Jan","Feb","Mar","Apr","May","Jun","July","Aug"];
+   	var popflg = "N";
+   	var pushflg = "N";
+   	var arrlenbp = arr.length;
+   	var arrdspflg = "N";
+   	
+   	// Invocation of Display function.
+    display(); 
+
+    //Push function.
+    function pushbut(){
+    	arr.push("Sep","Oct","Nov","Dec");
+    	pushflg = "Y";
+    	display();
+    	arrlenap = arr.len;
+    }
+
+    //Pop function.
+    function popbut(){
+    	var poplen = 0;
+    	var ilen = 0;
+    	var arrlenap = 0;
+    	if(pushflg == "Y"){              //Allow pop fn only if pop was performed
+    	arrlenap = arr.length;	
+    	poplen = arrlenbp - 1;
+    	ilen = arrlenap - 1;
+    	for(i= ilen; i> poplen;i--){     //For to pop only pushed elements.
+        arr.pop();
+  	    }	
+    	
+    	display();
+    	pushflg = "N";
+        }
+        else{
+        	alert("No new element where pushed to pop.")
+        }
+    	
+    }
+
+    //Display first for index array function.
+    function arrdsp(){
+
+    	arrdspflg = "Y";
+        display(); 
+        arrdspflg = "N"
+    }
+
+    //Common Display function..
+    function display(){
+
+    	var text = "<ul>";
+   	    var arrlen = arr.length;
+
+   	    if (arrdspflg == "Y"){
+   	    	arrlen = 4
+   	    }
+
+  	    for(i=0; i< arrlen;i++){
+
+  		text = text + "<li>"+arr[i] + "</li>";
+  	    }
+     
+        text += "</ul>"
+
+        document.getElementById("arrlist").innerHTML = text;
+
+    }
+
+   </script>
+</body>
+</html>
